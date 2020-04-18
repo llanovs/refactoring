@@ -8,7 +8,7 @@ import java.util.Vector;
 public class Scanner {
 	public static final String DEFAULT = "C:\\Workspace\\IT courses\\test.txt";
 
-	public static void main(String[] args){
+	public void printData(){
 		Data data = new Data();
 		try {
 			BufferedReader buffReader = new BufferedReader(new FileReader(DEFAULT));
@@ -32,7 +32,7 @@ public class Scanner {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-		 new DataPrinter(data).print();
+		new DataPrinter(data).print();
 	}
 }
 

@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class CalculationTest {
     Calculator calculator;
 
@@ -20,6 +22,7 @@ public class CalculationTest {
         calculator.setSecondNumber("3");
         calculator.setNumberSystem("10");
         calculator.getResult();
+        assertEquals(5, calculator.calculate());
     }
 
     @Test
@@ -29,6 +32,7 @@ public class CalculationTest {
         calculator.setFirstNumber("5");
         calculator.setSecondNumber("3");
         calculator.getResult();
+        assertEquals(2, calculator.calculate());
     }
 
     @Test
@@ -38,6 +42,7 @@ public class CalculationTest {
         calculator.setFirstNumber("5");
         calculator.setSecondNumber("3");
         calculator.getResult();
+        assertEquals(15, calculator.calculate());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package it.discovery.refactoring;
 
 import it.discovery.refactoring.calculator.Calculator;
+import it.discovery.refactoring.scanner.Scanner;
 
 public class App {
 
@@ -16,6 +17,7 @@ public class App {
      * For example: + 2 3 true
      */
     public static void main(String[] args) {
+        System.out.println("Calculator");
         Calculator calculator = new Calculator();
         calculator.setMathOperation(args[0]);
         calculator.setFirstNumber(args[1]);
@@ -29,5 +31,7 @@ public class App {
         } catch (ArrayIndexOutOfBoundsException e) {
         }
         calculator.getResult();
+        System.out.println("Scanner");
+        new Scanner().printData();
     }
 }

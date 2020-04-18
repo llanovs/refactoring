@@ -6,6 +6,8 @@ import java.io.IOException;
 public class Calculator {
 
     public static final String DEFAULT_PATH = "C:\\Workspace\\IT courses\\";
+    public static final String DEFAULT_FILE = "test.txt";
+
     private String mathOperation;
     private int firstNumber;
     private int secondNumber;
@@ -47,12 +49,16 @@ public class Calculator {
      */
     public void getResult() {
         String report = "Start\n";
-        report += calculate();
+        report = "Argument 1: " + convertToNumberSystem(firstNumber, numberSystem) + "\n";
+        report += "Argument 2: " + convertToNumberSystem(secondNumber, numberSystem) + "\n";
+        report += "Math operation:" + (mathOperation.equals("+") ? "Addition \n" : mathOperation.equals("-") ? "Subtraction \n" :
+                mathOperation.equals("*") ? "Multiplication \n" : "");
+        report += "Result: " + convertToNumberSystem(calculate(), numberSystem) + "\n";
         report += "Finish";
         if (!preservation) {
             System.out.println(report);
         } else {
-            try (FileWriter file = new FileWriter(DEFAULT_PATH + "test.txt")) {
+            try (FileWriter file = new FileWriter(DEFAULT_PATH + DEFAULT_FILE)) {
                 file.write(report);
                 file.flush();
             } catch (IOException e) {
@@ -63,15 +69,9 @@ public class Calculator {
     }
 
 
-    public String calculate() {
-        String report = "Argument 1: " + convertToNumberSystem(firstNumber, numberSystem) + "\n";
-        report += "Argument 2: " + convertToNumberSystem(secondNumber, numberSystem) + "\n";
-        report += "Math operation:" + (mathOperation.equals("+") ? "Addition \n" : mathOperation.equals("-") ? "Subtraction \n" :
-                mathOperation.equals("*") ? "Multiplication \n" : "");
-        int result = mathOperation.equals("+") ? firstNumber + secondNumber : mathOperation.equals("-") ? firstNumber - secondNumber :
+    public int calculate() {
+        return mathOperation.equals("+") ? firstNumber + secondNumber : mathOperation.equals("-") ? firstNumber - secondNumber :
                 mathOperation.equals("*") ? firstNumber * secondNumber : 0;
-        report += "Result: " + convertToNumberSystem(result, numberSystem) + "\n";
-        return report;
     }
 
     private static String convertToNumberSystem(int number, int numberSystem) {
