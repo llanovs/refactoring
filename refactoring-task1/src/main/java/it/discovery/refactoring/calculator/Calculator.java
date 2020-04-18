@@ -75,23 +75,11 @@ public class Calculator {
     }
 
     private static String convertToNumberSystem(int number, int numberSystem) {
+        System.out.println("Converted " + number + " to " + numberSystem);
         return numberSystem == 2 ? Integer.toBinaryString(number) :
                 numberSystem ==8 ? Integer.toOctalString(number) :
                         numberSystem == 16 ? Integer.toHexString(number) : "" + number;
     }
-
-    private static String convertNumberSystemToInt(int number, String numberSystem) {
-        int sc = 10;
-        try {
-            sc = Integer.parseInt(numberSystem);
-        } catch (NumberFormatException ex) {
-            System.out.println("Error number system data. Check input data");
-        }
-        numberSystem = Integer.toString(number, sc);
-        System.out.println("Converted " + number + " to " + numberSystem);
-        return numberSystem;
-    }
-
 
     private int convertStringToInt(String str){
         int number = 0;
